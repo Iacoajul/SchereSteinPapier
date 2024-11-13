@@ -1,0 +1,33 @@
+/* Element Deklaration */
+
+h1  {color: #6a5acd;
+     background-color: #c5c1c1;}
+
+h2  {color: #6a5acd;
+     background-color: #dddbdb;}
+
+p   {background-color: #e8e8e8;}
+
+ul  {background-color: #e8e8e8;}
+
+body    {background-color: #f0f0f0;
+         font-family: Tahoma, Verdana, sans-serif;
+         margin: 35px;
+        }
+label{
+    
+    color:#00c900;
+    background-color: black;
+}
+
+
+
+/* Klassen Deklarationen */
+
+
+
+/* Identifier Deklaration */
+
+#start {width: 100px}
+
+#selectionArea {display: none;}
