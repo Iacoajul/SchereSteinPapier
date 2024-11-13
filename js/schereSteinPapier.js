@@ -1,3 +1,6 @@
+const pAmount = urlParams.get(pAmount);  //StringValue (botgame, duel, threesome, none)
+const wAmount = urlParams.get(wAmount); //int value 1-15
+
 function computerPlay() { //Zufallsfunktion zur Auswahl des NPC
     const options = ['rock', 'paper', 'scissors'];
     const randomIndex = Math.floor(Math.random() * options.length);
@@ -5,20 +8,20 @@ function computerPlay() { //Zufallsfunktion zur Auswahl des NPC
     return options[randomIndex];
 }
 
-function playRound(playerSelection, computerSelection) { // Auswertung der Auswahlen und Rückgabe von passendem Text
+function playRound(player1Selection, player2Selection) { // Auswertung der Auswahlen und Rückgabe von passendem Text
     
     if (
-        (playerSelection === 'rock' && computerSelection === 'scissors') ||
-        (playerSelection === 'paper' && computerSelection === 'rock') ||
-        (playerSelection === 'scissors' && computerSelection === 'paper')
+        (player1Selection === 'rock' && player2Selection === 'scissors') ||
+        (player1Selection === 'paper' && player2Selection === 'rock') ||
+        (player1Selection === 'scissors' && player2Selection === 'paper')
     ) {
-        return 'You win! ' + playerSelection + ' beats ' + computerSelection;
+        return 'You win! ' + player1Selection + ' beats ' + player2Selection;
     } else if (
-        (playerSelection === 'rock' && computerSelection === 'paper') ||
-        (playerSelection === 'paper' && computerSelection === 'scissors') ||
-        (playerSelection === 'scissors' && computerSelection === 'rock')
+        (player1Selection === 'rock' && player2Selection === 'paper') ||
+        (player1Selection === 'paper' && player2Selection === 'scissors') ||
+        (player1Selection === 'scissors' && player2Selection === 'rock')
     ) {
-        return 'You lose! ' + computerSelection + ' beats ' + playerSelection;
+        return 'You lose! ' + player2Selection + ' beats ' + player1Selection;
     } else {
         return 'It\'s a tie!';
     }
@@ -29,9 +32,9 @@ function show(){
 
 function game(selection) { // wird durch den onchange im HTML aufgerufen. Parameter wird über this-Operator mit ausgewählten value dort festgelegt
     
-    const playerSelection = selection;
-    const computerSelection = computerPlay(); // siehe oben
+    const player1Selection = selection;
+    const player2Selection = computerPlay(); // siehe oben
     
-    console.log(playRound(playerSelection, computerSelection)); //Ausgabe des Ergebnisses auf der Konsole, das durch die Funktion playRound produziert wurde.
+    console.log(playRound(player1Selection, player2Selection)); //Ausgabe des Ergebnisses auf der Konsole, das durch die Funktion playRound produziert wurde.
         
 }

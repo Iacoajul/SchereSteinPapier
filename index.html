@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>1 Schere Stein Papier</title>
+    <title>Schere Stein Papier</title>
     <link rel="stylesheet" type="text/css" href="css/meinCSS.css" />
-    <script src="js/schereSteinPapier.js" defer></script>
-  </head>
-  <body>
-    <h1>JS Programmieren</h1>
-    <h2>Spiele: Schere Stein Papier</h2>
-      
-    <img src="img/start.png" alt="start" id="start" onclick= "show()"><br>
-      
-    <section id="selectionArea">
-        <label for="schereSteinPapier">&nbsp;Make your choice! &nbsp;</label><br> <!-- HTML Character Entities mit & ... ; siehe https://www.w3schools.com/html/html_entities.asp -->
-        
-        <select name="schereSteinPapier" id="schereSteinPapier" onchange=game(this.value);> <!-- das this keyword referenziert das select-Objekt / WICHTIG: name und id notwendig (altes HTML) -->
-            <option value="nothing">scissors? rock? paper?</option>
-            <option value="scissors">Scissors</option>
-            <option value="rock">Rock</option>
-            <option value="paper">Paper</option>
-        </select>  
-        
-    </section>    
-  </body>
+    <!-- <script src="js/schereSteinPapier.js" defer></script> -->
+    <script src="js/gameLoader.js"  defer></script>
+</head>
+
+<body>
+
+    <label for="players" >How many Players?</label>
+    <select name="players" id="players">
+    <option value="botgame">One</option>
+    <option value="duel">Two</option>
+    <option value="threesome">Three</option>
+    <option value="none">None</option>
+    </select>
+
+    <label for="rounds">How many Wins?</label>
+    <input type="number" min="1" max="15" name="WinCon" id="WinCon" value="1">
+
+
+
+
+    <img src="img/start.png" alt="start" id="start" onclick= "playGame()"><br>
+
+</body>
+
+
 </html>
