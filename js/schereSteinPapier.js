@@ -11,6 +11,7 @@ const GameState = {
         activeMode: null,
         participants: [],
         currentTurn: 0,
+        currentRound: 1,
         selections: {}, //hopefully deadweight
         scores: {},
         winsNeeded: 0
@@ -19,6 +20,7 @@ const GameState = {
     initialize(mode, winsNeeded) {
         this.state.activeMode = mode;
         this.state.winsNeeded = winsNeeded;
+        this.currentRound = 1;
         this.setupParticipants(mode);
         this.resetGame();
     },
@@ -46,6 +48,18 @@ const GameState = {
 
     getCurrentParticipant() {
         return this.state.participants[this.state.currentTurn % this.state.participants.length];
+    },
+
+    showOnlyCurrentParticipant() {
+        this.state.participants
+            .filter(p => p.type === 'human') 
+            .forEach(p => {
+                if (p.id === this.getCurrentParticipant().id) {
+                    UIManager.displaySelectionArea(p.id);
+                } else {
+                    UIManager.hideSelectionArea(p.id);
+                }
+            });
     }
 };
 
@@ -71,11 +85,17 @@ const UIManager = {
 
         // Add the scoreboard to the container
         container.appendChild(this.createScoreBoard());
+
+        // Add the round count to the container
+    container.appendChild(this.createRoundCount());
+
+        GameState.showOnlyCurrentParticipant();
     },
 
     createSelectionArea(participant) {
         const section = document.createElement('section');
         section.id = `selectionArea_${participant.id}`;
+        section.className = 'selectionArea';
         section.innerHTML = `
             <label for="choice_${participant.id}">${participant.name}'s choice:</label>
             <select id="choice_${participant.id}" onchange="GameController.handleSelection('${participant.id}', this.value)">
@@ -92,8 +112,20 @@ const UIManager = {
         document.getElementById(`selectionArea_${participantId}`).style.display = 'none';
     },
 
-    displaySelectionArea(participantId, choice) {
-        document.getElementById(`selectionArea_${participantId}`).style.display = 'block';
+    displaySelectionArea(participantId) {
+        const element = document.getElementById(`selectionArea_${participantId}`);
+        if (element) {
+            element.style.display = 'block';
+        } else {
+            console.error(`Element with ID selectionArea_${participantId} not found.`);
+        }
+    },
+
+    createRoundCount() {
+        const roundCount = document.createElement('div');
+        roundCount.id = 'roundCount';
+        roundCount.innerHTML = `Round: <span id="currentRound">${GameState.state.currentRound }</span>`;
+        return roundCount;
     },
 
     createScoreBoard() {
@@ -104,6 +136,8 @@ const UIManager = {
             scoreBoard.innerHTML += `<div>${p.name}: <span id="score_${p.id}">0</span></div>`;
         });
 
+    
+
         return scoreBoard;
     },
 
@@ -111,6 +145,10 @@ const UIManager = {
         Object.entries(GameState.state.scores).forEach(([id, score]) => {
             document.getElementById(`score_${id}`).textContent = score;
         });
+    },
+
+    updateRoundCount() {
+        document.getElementById('currentRound').textContent = GameState.state.currentRound;
     }
 };
 
@@ -149,9 +187,10 @@ const GameController = {
         }
     },
 
-    evaluateRound() {
+    async evaluateRound() {
         const participants = GameState.state.participants;
 
+        
         // Let bots make their selections
         participants.forEach(p => {
             if (p.type === 'bot') {
@@ -159,7 +198,7 @@ const GameController = {
             }
         });
 
-
+        setTimeout(() => {
         // Compare selections and update scores
         participants.forEach(p1 => {
             participants.forEach(p2 => {
@@ -177,14 +216,17 @@ const GameController = {
         this.displayResults();
 
         // Update the scoreboard
+        GameState.state.currentRound++;
         UIManager.updateScores();
+        UIManager.updateRoundCount();
 
         // Check for a winner
         this.checkWinCondition();
 
         // Reset selections for the next round
         GameState.resetGame();
-
+        GameState.showOnlyCurrentParticipant();
+    },1500);
     },
 
     displayResults() {
@@ -207,20 +249,24 @@ const GameController = {
         participants.forEach(p => {
             if (GameState.state.scores[p.id] >= winsNeeded) {
                 alert(`${p.name} wins the game!`);
-                this.endGame();
+                this.endGame(p.name);
             }
         });
     },
 
-    endGame() {
+    endGame(winner) {
         // Logic to end the game, e.g., reset the game state or navigate to a different page
+        window.location.href = `win.html?winner=${winner}`;
+        
         GameState.resetGame();
         UIManager.createGameUI();
+        GameState.state.currentRound = 1;
     },
 
 
     advanceTurn() {
         GameState.state.currentTurn++;
+        GameState.showOnlyCurrentParticipant();
     }
 };
 
@@ -246,3 +292,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const winsNeeded = parseInt(urlParams.get('wAmount'));
     GameController.initialize(mode, winsNeeded);
 });
+
+
+
+/*tode:
+-   winning page
+-   rundenzähler
+*/

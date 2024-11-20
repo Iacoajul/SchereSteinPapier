@@ -30,9 +30,36 @@ label{
 
 #start {width: 100px}
 
-/*
-#selectionArea1 {display: none;}
+/* Container for the game UI */
+#gameContainer {
+     /* Your styles here */
+ }
+ 
+ /* Display area for round results */
+ #resultDisplay {
+     /* Your styles here */
+ }
+ 
+ /* Container for the round count */
+ #roundCount {
+     /* Your styles here */
+ }
+ 
+ /* Span element for the current round number */
+ #currentRound {
+     /* Your styles here */
+ }
+ 
+ /* Container for the scoreboard */
+ #scoreBoard {
+     /* Your styles here */
+ }
+ 
+ #winnerDisplay {
+     /* Your styles here */
+ }
 
-#selectionArea2 {display: none;}
-
-#botArea3 {display: none;}    */
+ /* Class for participant selection areas */
+ .selectionArea {
+     color: blue;
+ }
