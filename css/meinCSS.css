@@ -1,7 +1,8 @@
 /* Element Deklaration */
 
 h1  {color: #6a5acd;
-     background-color: #c5c1c1;}
+     background-color: #c5c1c1;
+     text-shadow: 0 0 0.5px black;}
 
 h2  {color: #6a5acd;
      background-color: #dddbdb;}
@@ -56,8 +57,69 @@ label{
  }
  
  #winnerDisplay {
-     /* Your styles here */
+    background-image: url("/img/konfetti.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 75%;
+
+    color: rgb(255, 255, 255);
+
+    text-shadow:  2px  2px 2px black,
+                  1px -1px 1px black,
+                 -1px  1px 1px black,
+                 -1px -1px 1px black;
+
+    font-size: 32px;
+    font-weight: bold;
+    font-family: monospace;
+    margin: 50px;
+    padding: 50px;
+    border-style: none none solid none;
+    border-color: rgb(210, 42, 42);
+    border-width: 1.5px;
+}
+
+
+ #winnerName {
+    color: rgb(210, 42, 42);
+    background-color: transparent;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    animation: typing 3s steps(8) forwards;
  }
+  
+/*typing animation*/
+@keyframes typing {
+    0% {
+        width: 0;
+     } 
+    100% {
+        width: 8ch;
+     }
+}
+
+#restartButton {
+    margin: 20px;
+    padding: 10px;
+    border-color: rgb(210, 42, 42);
+    font-family: monospace;
+    font-size: 17px;
+    font-weight: bold;
+    animation: blinker 2s linear infinite;
+}
+/*blinking animation*/
+@keyframes blinker {
+    15% {
+        opacity: 1;
+    }
+    45% {
+      opacity: 0;
+    }
+    65% {
+        opacity: 1;
+    }
+  }
 
  /* Class for participant selection areas */
  .selectionArea {
