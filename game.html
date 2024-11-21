@@ -3,30 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>1 Schere Stein Papier</title>
+    <title>Schere Stein Papier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/meinCSS.css" />
     <link rel="icon" type="image/x-icon" href="/img/scissors.png">
     <script src="js/schereSteinPapier.js" defer></script>
   </head>
   <body>
-    <h1>JS Programmieren</h1>
-    <h2>Spiele: Schere Stein Papier</h2>
       
+    <div class="mainContainer">
+      <img src="img/logo.png" width="525px">
     <!-- <img src="img/start.png" alt="start" id="start" onclick= "show()"><br> -->
-      
     <section id="gameContainer">
       <!-- This will be populated dynamically, but initially can have: -->
-      <section id="selectionArea1">
+      <div id="selectionArea1">
           <label for="schereSteinPapier">Make your choice!</label>
           <select name="schereSteinPapier" id="schereSteinPapier">
               <option value="nothing">scissors? rock? paper?</option>
               <option value="scissors">Scissors</option>
               <option value="rock">Rock</option>
               <option value="paper">Paper</option>
-          </select>
-      </section>
       <div id="resultDisplay"></div>
+          </select>
+      </div>
   </section>
+  </div>
 
 
   </body>

@@ -97,8 +97,8 @@ const UIManager = {
         section.id = `selectionArea_${participant.id}`;
         section.className = 'selectionArea';
         section.innerHTML = `
-            <label for="choice_${participant.id}">${participant.name}'s choice:</label>
-            <select id="choice_${participant.id}" onchange="GameController.handleSelection('${participant.id}', this.value)">
+            <label for="choice_${participant.id}">${participant.name}'s choice:</label><br>
+            <select id="choice_${participant.id}" class="options" onchange="GameController.handleSelection('${participant.id}', this.value)">
                 <option value="nothing">scissors? rock? paper?</option>
                 <option value="scissors">Scissors</option>
                 <option value="rock">Rock</option>
@@ -115,7 +115,7 @@ const UIManager = {
     displaySelectionArea(participantId) {
         const element = document.getElementById(`selectionArea_${participantId}`);
         if (element) {
-            element.style.display = 'block';
+            element.style.display = 'flex';
         } else {
             console.error(`Element with ID selectionArea_${participantId} not found.`);
         }
@@ -131,6 +131,7 @@ const UIManager = {
     createScoreBoard() {
         const scoreBoard = document.createElement('div');
         scoreBoard.id = 'scoreBoard';
+        scoreBoard.classList.add("scores");
 
         GameState.state.participants.forEach(p => {
             scoreBoard.innerHTML += `<div>${p.name}: <span id="score_${p.id}">0</span></div>`;

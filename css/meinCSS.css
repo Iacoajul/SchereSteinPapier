@@ -11,16 +11,71 @@ p   {background-color: #e8e8e8;}
 
 ul  {background-color: #e8e8e8;}
 
-body    {background-color: #f0f0f0;
-         font-family: Tahoma, Verdana, sans-serif;
-         margin: 35px;
-        }
-label{
-    
-    color:#00c900;
-    background-color: black;
+body {
+    font-family: "Sour Gummy", Verdana, sans-serif;
+    background-image: url("../img/background.png");
 }
 
+label{
+    color:#e94a2c;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.mainContainer {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 6px, solid, #e94a2c;
+    border-radius: 30px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 10px hsla(0, 0%, 0%, 0.404);
+}
+
+#subContainer {
+    margin-top: 50px;
+    padding: 15px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options {
+    width: 250px;
+    height: 35px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 3px, solid, #3333cc;
+    padding-left: 5px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+#rounds {
+    margin-top: 30px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 400;
+    color: white;
+    margin-top: 30px;
+    width: 100%;
+    height: 50px;
+    background-color: #3333cc;
+}
 
 
 /* Klassen Deklarationen */
@@ -29,21 +84,53 @@ label{
 
 /* Identifier Deklaration */
 
-#start {width: 100px}
+#start {
+    margin-top: 50px;
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    border: 6px, solid, #e94a2c;
+    border-radius: 30px;
+    background-color: #e94a2c;
+    color: white;
+}
+
+#start:hover {
+    background-color: #db2b08;
+    border: 6px, solid, #db2b08;
+}
+
+#start:active {
+    background-color: #bc2506;
+    border: 6px, solid, #bc2506;
+}
 
 /* Container for the game UI */
 #gameContainer {
-     /* Your styles here */
- }
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
  
  /* Display area for round results */
  #resultDisplay {
-     /* Your styles here */
  }
  
  /* Container for the round count */
  #roundCount {
-     /* Your styles here */
+    width: 100%;
+    height: 50px;
+    background-color: #e94a2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
  }
  
  /* Span element for the current round number */
@@ -53,7 +140,6 @@ label{
  
  /* Container for the scoreboard */
  #scoreBoard {
-     /* Your styles here */
  }
  
  #winnerDisplay {
@@ -123,5 +209,9 @@ label{
 
  /* Class for participant selection areas */
  .selectionArea {
-     color: blue;
+    margin-top: 30px;
+    margin-bottom: 30px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
  }

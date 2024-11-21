@@ -4,29 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Schere Stein Papier</title>
-    <link rel="stylesheet" type="text/css" href="css/meinCSS.css" />
-    <link rel="icon" type="image/x-icon" href="/img/scissors.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/meinCSS.css">
     <!-- <script src="js/schereSteinPapier.js" defer></script> -->
     <script src="js/gameLoader.js"  defer></script>
 </head>
 
 <body>
-
-    <label for="players" >How many Players?</label>
-    <select name="players" id="players">
-    <option value="botgame">One</option>
-    <option value="duel">Two</option>
-    <option value="threesome">Three</option>
-    <!-- <option value="none">None</option> -->
-    </select>
-
-    <label for="rounds">How many Wins?</label>
-    <input type="number" min="1" max="15" name="WinCon" id="WinCon" value="1">
-
-
-
-
-    <img src="img/start.png" alt="start" id="start" onclick= "playGame()"><br>
+    <div class="mainContainer">
+        <img src="img/logo.png" width="720px">
+        <div id="subContainer">
+            <label for="players" class="startLabel">How many Players?</label>
+            <select name="players" id="players" class="options">
+            <option value="botgame">One</option>
+            <option value="duel">Two</option>
+            <option value="threesome">Three</option>
+            <!-- <option value="none">None</option> -->
+            </select>
+        
+            <label for="rounds" id="rounds" class="startLabel">How many Wins?</label>
+            <input type="number" min="1" max="15" name="WinCon" id="WinCon" class="options" value="1">
+ 
+            <div id="start" onclick= "playGame()">START</div>
+        </div>
+    </div>
 
 </body>
 
